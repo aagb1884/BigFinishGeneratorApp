@@ -4,10 +4,13 @@ export default function Header() {
 
     return (
         <View style={styles.header}>
-            <View style={styles.headerText}>
-            <Text>The BIG FINISH Boxset Generator</Text>
+            <View style={styles.h1}>
+            <Text style={styles.headerText}>The BIG FINISH Boxset Generator</Text>
             </View>
+            <View style={styles.subheader}>
             <Text style={styles.subheaderText}>Because we have hundreds of these to make and ideas are hard</Text>
+            </View>
+            
         </View>
      )
 }
@@ -15,8 +18,6 @@ export default function Header() {
 const styles = StyleSheet.create({
     header: {
         backgroundColor: '#972C34',
-        color: 'white',
-        textAlign: 'left',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -24,13 +25,25 @@ const styles = StyleSheet.create({
         position: 'fixed',
         bottom: 0,
         width: '100%',
-        height: 100,
         zIndex: 999,
     },
+    h1: {
+        width: '70%',
+        marginTop: 25
+    },
     headerText: {
-
+        fontSize: 40,
+        color: 'white',
+        paddingTop: 10
+    },
+    subheader: {
+        width: '30%',
+        marginTop: 20
     },
     subheaderText: {
+        color: 'white',
         fontStyle: 'italic',
+        fontSize: 10,
+        paddingTop: 10
     }
   });

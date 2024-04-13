@@ -8,7 +8,6 @@ import MainCharacter from './components/MainCharacter';
 import SupportingCharacter from './components/SupportingCharacter';
 import Villain from './components/Villain';
 import Location from './components/Location';
-// import SocialMediaShare from './components/SocialMediaShare';
 import ClearAll from './components/ClearAll';
 import ShareButton from './components/Share';
 
@@ -29,8 +28,10 @@ export default function App() {
 }
 
 // string to pass to social media buttons
-const pitch = `At last, ${mainCharacter} and ${supportingCharacter} meet ${villain} in ${location}!`
-
+const pitch = mainCharacter && supportingCharacter && villain && location
+ ? `"At last, ${mainCharacter} and ${supportingCharacter} meet ${villain} in ${location}!"`
+ : ''
+ 
 // function to pass to all list files to play audio on button press
 
 
@@ -99,11 +100,7 @@ const pitch = `At last, ${mainCharacter} and ${supportingCharacter} meet ${villa
           <View style={styles.sharing}>
             <ShareButton pitch={pitch} />
 
-          </View>
-         
-          {/* <SocialMediaShare pitch={pitch}/> */}
-       
-      
+          </View>  
     
         </View>
       

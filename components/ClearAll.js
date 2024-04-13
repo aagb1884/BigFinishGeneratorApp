@@ -16,7 +16,7 @@ export default function ClearAll({clearAll}) {
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: 10,
+        marginTop: 30,
         padding: 10,
       backgroundColor: '#972C34',
       width: 200,

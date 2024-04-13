@@ -2,11 +2,16 @@ import React from 'react';
 import {Alert, Share, View, Button} from 'react-native';
 
 export default function ShareButton ({pitch}) {
+    const link = 'https://andrewblair.co.uk/apps';
+
   const onShare = async () => {
     try {
       const result = await Share.share({
         message:
-          `${pitch}`,
+        `Ever wondered what you'd say to Nick Briggs if you were trapped in a lift together?
+        \nWell wonder no more! 
+        \nWith the Big Finish Boxset Generator App you can come up with dozens of lukewarm pitches to while away the increasingly oxygen-starved hours.
+        \n${pitch}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
