@@ -10,6 +10,7 @@ import Villain from './components/Villain';
 import Location from './components/Location';
 // import SocialMediaShare from './components/SocialMediaShare';
 import ClearAll from './components/ClearAll';
+import ShareButton from './components/Share';
 
 
 export default function App() {
@@ -93,6 +94,11 @@ const pitch = `At last, ${mainCharacter} and ${supportingCharacter} meet ${villa
           {supportingCharacter && <Text style={styles.supportingCharacter}>and {supportingCharacter}</Text>}
           {villain && <Text style={styles.villain}>will meet {villain}</Text>}
           {location && <Text style={styles.location}>in {location}</Text>}
+          </View>
+
+          <View style={styles.sharing}>
+            <ShareButton pitch={pitch} />
+
           </View>
          
           {/* <SocialMediaShare pitch={pitch}/> */}
