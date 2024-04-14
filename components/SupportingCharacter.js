@@ -26,7 +26,9 @@ export default function SupportingCharacter({fontsLoaded, getRandomThing, setSup
         'the Afghan kid Danny Pink killed',
         'the cow the Doctor asked about time scanners',
         "Maria's Dad",
-        "Nerys"
+        "Nerys",
+        "Bill's Foster Mum",
+        "Boss Baby"
     ];
 
     async function playSound() {

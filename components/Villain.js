@@ -12,19 +12,22 @@ export default function Villain({fontsLoaded, getRandomThing, setVillain, setSho
         'Madame Kovarian',
         'Jack Robertson',
         'the Timewyrm',
-        'that big Yellow Dalek',
         'General Cobb',
-        'evil gas or something, whatever it was',
+        'evil gas or something',
         'the Birmingham six',
         'the War Engin',
         "Turlough's solicitor",
         'Mark Lawrenson',
         'Dark Sam',
         'all the Kraals',
-        'Mysterious Man',
+        "Bertie Carvel's Mysterious Man",
         'the Shansheeth',
         'a Hypnotron',
-        'woke Davros'
+        'Woke Davros',
+        "Ian Levine's AI Hartnell",
+        'some new type of Dalek (so Nick Briggs can try out a new voice)',
+        'Andrew Marr',
+
     ];
 
     async function playSound() {

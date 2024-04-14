@@ -22,13 +22,16 @@ export default function MainCharacter({fontsLoaded, getRandomThing, setMainChara
         'Lucy Saxon',
         'the Kerblam HR team',
         "Someone Jacob Dudman can't quite do the voice for",
-        "Arabella Weir Doctor",
+        "the Arabella Weir Doctor",
         'Nardole',
         'Morton Dill',
         'Tallulah and Laszlo',
-        'Doctor Pastry',
+        "an Unbound Doctor where he's played as Mr Pastry",
         'Bessie',
-        'The Shadow Proclamation'
+        'The Shadow Proclamation',
+        'Doom',
+        "that big Irish cat from 'Gridlock'",
+        
     ];
     
     async function playSound() {

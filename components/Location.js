@@ -6,24 +6,28 @@ export default function Location({fontsLoaded, getRandomThing, setLocation, setS
     const previousLocation = useRef(null);
 
     const eventLocationList = [
-        'a lift',
-        'Pigbin Josh',
-        'Norwich',
-        "a locked Tesla",
-        'the Club Bongo International (Middlesbrough) during the Nineties',
-        'F-Space',
-        'Albert Square',
-        "an earth colony where it's illegal to post cringe",
-        "the sleepy English village of Bidmead",
-        'the car park in Tenby that always smells of piss',
-        "a space station with abandonment issues",
-        "the Second Doctor's hotel room",
-        "or on a planet named after its  primary characteristic",
-        "an amateur production of 'Footloose'",
-        'a strange limbo world where nothing is as it seems',
-        'a space whale',
-        'the Netherfield ball',
-        "harry sullivan's infanticide maze"
+        'a lift.',
+        'Pigbin Josh.',
+        'Norwich.',
+        "a locked Tesla.",
+        'the Club Bongo International (Middlesbrough) during the Nineties.',
+        'F-Space.',
+        'Albert Square.',
+        "an Earth colony where it's illegal to post cringe.",
+        "the sleepy English village of Bidmead.",
+        'the car park in Tenby that always smells of piss.',
+        "a space station with abandonment issues.",
+        "the Second Doctor's hotel room.",
+        "or on a planet named after its primary characteristic.",
+        "an amateur production of 'Footloose'.",
+        'a strange limbo world where nothing is as it seems.',
+        'a space whale.',
+        'the Netherfield ball.',
+        "harry sullivan's infanticide maze.",
+        "Charles Dicken's death bed",
+        'a softplay',
+        'Stoke-on-Trent'
+
     ];
 
 

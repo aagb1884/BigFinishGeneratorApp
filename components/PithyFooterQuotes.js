@@ -15,7 +15,8 @@ export default function PithyFooterQuotes ({fontsLoaded}) {
         "Eccleston scares us",
         "If the russian federation is reading this, we're interested",
         "if McGann gets his own tv series we're recasting him",
-        "we've run out of Doctors for River Song to meet"
+        "we've run out of Doctors for River Song to meet",
+        "honestly if you're free and in the area you can play the First Doctor"
     ];
 
     const randomIndex = Math.floor(Math.random() * footerQuotes.length);
