@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image, Text } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet, ScrollView, View, Image, Text } from 'react-native';
+import { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -10,7 +10,7 @@ import Villain from './components/Villain';
 import Location from './components/Location';
 import ClearAll from './components/ClearAll';
 import ShareButton from './components/Share';
-
+import * as Font from 'expo-font';
 
 export default function App() {
   const [mainCharacter, setMainCharacter] = useState("");
@@ -19,6 +19,24 @@ export default function App() {
   const [location, setLocation] = useState("");
   const [gif, setGif] = useState("");
   const [showGif, setShowGif] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  async function loadFonts() {
+    await Font.loadAsync({
+      'figtree': require('./assets/fonts/Figtree-VariableFont_wght.ttf'),
+      'figtreeItalic': require('./assets/fonts/Figtree-Italic-VariableFont_wght.ttf'),
+      'figtreeBold': require('./assets/fonts/Figtree-Bold.ttf'),
+      'figtreeXBold' : require('./assets/fonts/Figtree-ExtraBold.ttf')
+    });
+  }
+
+  useEffect(() => {
+    const loadFontsAsync = async () => {
+      await loadFonts();
+      setFontsLoaded(true)
+    }
+    loadFontsAsync();
+  }, []);
 
   function clearAll() {
     setMainCharacter("");
@@ -50,11 +68,12 @@ const pitch = mainCharacter && supportingCharacter && villain && location
 
   return (
     <SafeAreaProvider>
-      <StatusBar style="auto" />
-      <Header />
-    <View style={styles.container}>
-    
-        <View style={styles.mainContent}>
+      <StatusBar style="light" />
+      <Header fontsLoaded={fontsLoaded}/>
+
+    <ScrollView style={styles.scrollContainer}>
+      <View style={styles.container}>
+        
           <View style={styles.gifWindow}>
           {showGif && (
             <Image source={gif} style={styles.gifImage}/> 
@@ -66,71 +85,107 @@ const pitch = mainCharacter && supportingCharacter && villain && location
           setMainCharacter={setMainCharacter}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
-          setGif={setGif} />
+          setGif={setGif} 
+          fontsLoaded={fontsLoaded} />
 
           <SupportingCharacter 
           setSupportingCharacter={setSupportingCharacter}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
-          setGif={setGif} />
+          setGif={setGif} 
+          fontsLoaded={fontsLoaded} />
         
           <Villain 
           setVillain={setVillain}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
-          setGif={setGif} />
+          setGif={setGif} 
+          fontsLoaded={fontsLoaded}/>
         
           <Location 
           setLocation={setLocation}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
-          setGif={setGif} />
-          </View>
+          setGif={setGif} 
+          fontsLoaded={fontsLoaded}/>
+
           <View style={styles.clearAllContainer}>
-          <ClearAll clearAll={clearAll} />
+          <ClearAll clearAll={clearAll} 
+          fontsLoaded={fontsLoaded} />
           </View>
           
           <View style={styles.generatedStory}>
-          {mainCharacter && <Text style={styles.mainCharacter}>At last, {mainCharacter}</Text>}
-          {supportingCharacter && <Text style={styles.supportingCharacter}>and {supportingCharacter}</Text>}
-          {villain && <Text style={styles.villain}>will meet {villain}</Text>}
-          {location && <Text style={styles.location}>in {location}</Text>}
+            {fontsLoaded && (
+              <>
+              {!mainCharacter && !supportingCharacter && !villain && !location && (
+              <Text style={styles.instructionText}>Press all four buttons to get your next pitch.</Text>
+              )}
+          {mainCharacter && <Text style={styles.storyText}>At last, {mainCharacter}</Text>}
+          {supportingCharacter && <Text style={styles.storyText}>and {supportingCharacter}</Text>}
+          {villain && <Text style={styles.storyText}>will meet {villain}</Text>}
+          {location && <Text style={styles.storyText}>in {location}</Text>}
+          </>
+            )}
           </View>
 
           <View style={styles.sharing}>
-            <ShareButton pitch={pitch} />
-
+            <ShareButton pitch={pitch} fontsLoaded={fontsLoaded} />
           </View>  
-    
-        </View>
-      
-    </View>
-    <Footer />
+          </View>
+          
+          
+         
+
+      </View>
+    </ScrollView>
+    <Footer fontsLoaded={fontsLoaded} />
     </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flex: 1,
+    flexDirection: 'column'
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
+    alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 0
   },
-  mainContent: {
-    
-  },
   gifImage: {
+    marginTop: 20,
     maxWidth: 300,
-    justifyContent: 'center',
-    zIndex: 1
+    maxHeight: 200,
+    zIndex: 1,
+    flexDirection: 'column',
   },
   buttonContainer: {
-
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    marginTop: 50,
   },
   clearAllContainer: {
     marginTop: 10,
+  },
+  generatedStory: {
+    maxWidth: 250,
+    marginTop: 20,
+  },
+  storyText: {
+    fontFamily: 'figtree',
+    fontSize: 18
+  },
+  instructionText: {
+    fontFamily: 'figtreeItalic',
+    color: '#2C968F',
+    textAlign: 'center'
   }
 });

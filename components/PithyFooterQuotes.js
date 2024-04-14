@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text } from "react-native"
 
-export default function PithyFooterQuotes () {
+export default function PithyFooterQuotes ({fontsLoaded}) {
 
     const footerQuotes = [
         "Matt Fitton hasn't seen his kids in years.",
@@ -14,22 +14,31 @@ export default function PithyFooterQuotes () {
         'bob baker somehow keeps pitching us k9 stuff',
         "Eccleston scares us",
         "If the russian federation is reading this, we're interested",
-        "if McGann gets his own tv series we're recasting him"
+        "if McGann gets his own tv series we're recasting him",
+        "we've run out of Doctors for River Song to meet"
     ];
 
     const randomIndex = Math.floor(Math.random() * footerQuotes.length);
     const selectedQuote = footerQuotes[randomIndex];  
 
     return (
-        <View>
+        <View style={styles.pithyFooterQuote}>
+             {fontsLoaded && (
+              <>
             <Text style={styles.pithyFooterQuoteText}>{selectedQuote}</Text>
+            </>
+            )}
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    pithyFooterQuote: {
+        padding: 10
+    },
     pithyFooterQuoteText: {
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'figtree'
     }
   });

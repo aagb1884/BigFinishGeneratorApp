@@ -1,6 +1,6 @@
 import { View, Pressable, StyleSheet, Text } from "react-native"
 
-export default function ClearAll({clearAll}) {
+export default function ClearAll({clearAll, fontsLoaded}) {
 
     return ( 
         <View>
@@ -8,7 +8,11 @@ export default function ClearAll({clearAll}) {
             style={styles.button}
             onPress={clearAll}
             >
+                 {fontsLoaded && (
+              <>
                 <Text style={styles.buttonText}>Clear All</Text>
+                </>
+            )}
             </Pressable>
         </View>
     )
@@ -18,15 +22,18 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 30,
         padding: 10,
-      backgroundColor: '#972C34',
-      width: 200,
-      position: 'relative',
-      top: 0,
-      left: 0,
-      marginBottom: 5
+        backgroundColor: '#2C968F',
+        width: 250,
+        position: 'relative',
+        top: 0,
+        left: 0,
+        marginBottom: 5,
+        borderRadius: 5
+        
     },
     buttonText: {
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'figtree'
     }
   });

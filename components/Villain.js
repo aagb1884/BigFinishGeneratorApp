@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function Villain({getRandomThing, setVillain, setShowGif, setGif}) {
+export default function Villain({fontsLoaded, getRandomThing, setVillain, setShowGif, setGif}) {
     const previousVillain = useRef(null);
 
     const villainList = [
@@ -50,7 +50,11 @@ return (
     style={styles.button}
     onPress={handleButtonClick}
     >
+        {fontsLoaded && (
+              <>
         <Text style={styles.buttonText}>Get Villain</Text>
+        </>
+            )}
     </Pressable>
 </View>
  )
@@ -61,14 +65,16 @@ button: {
 marginTop: 10,
 padding: 10,
 backgroundColor: '#972C34',
-width: 200,
+width: 300,
 position: 'relative',
 top: 0,
 left: 0,
-marginBottom: 5
+marginBottom: 5,
+borderRadius: 5
 },
 buttonText: {
 color: 'white',
-textAlign: 'center'
+textAlign: 'center',
+fontFamily: 'figtree'
 }
 });

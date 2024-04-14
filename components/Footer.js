@@ -2,17 +2,21 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import PithyFooterQuotes from './PithyFooterQuotes';
 
-export default function Footer() {
+export default function Footer({fontsLoaded}) {
     return (
         <View style={styles.footer}>
             <View style={styles.leftFooter}>
+            {fontsLoaded && (
+              <>
                 <Text style={styles.title}>WE LOVE STORIES</Text>
+                </>
+            )}
             </View>
             <View style={styles.centreFooter}>
                 <Text style={styles.line}>|</Text>
             </View>
             <View style={styles.rightFooter}>
-                <PithyFooterQuotes /> 
+                <PithyFooterQuotes fontsLoaded={fontsLoaded} /> 
             </View>
           
         </View>
@@ -39,6 +43,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'white',
         marginHorizontal: 10, 
+        fontFamily: 'figtreeBold'
     },
     line: {
         fontSize: 70, 

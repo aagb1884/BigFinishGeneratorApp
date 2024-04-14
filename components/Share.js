@@ -2,8 +2,7 @@ import React from 'react';
 import {Alert, Share, View, Button} from 'react-native';
 
 export default function ShareButton ({pitch}) {
-    const link = 'https://andrewblair.co.uk/apps';
-
+   
   const onShare = async () => {
     try {
       const result = await Share.share({

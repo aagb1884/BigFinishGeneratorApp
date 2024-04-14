@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function SupportingCharacter({getRandomThing, setSupportingCharacter, setShowGif, setGif}) {
+export default function SupportingCharacter({fontsLoaded, getRandomThing, setSupportingCharacter, setShowGif, setGif}) {
     const previousCharacter = useRef(null);
 
     const supportingCharacterList = [
@@ -53,7 +53,11 @@ export default function SupportingCharacter({getRandomThing, setSupportingCharac
             style={styles.button}
             onPress={handleButtonClick}
             >
+                {fontsLoaded && (
+              <>
                 <Text style={styles.buttonText}>Get Supporting Character</Text>
+                </>
+            )}
             </Pressable>
         </View>
          )
@@ -64,14 +68,16 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10,
     backgroundColor: '#972C34',
-    width: 200,
+    width: 300,
     position: 'relative',
     top: 0,
     left: 0,
-    marginBottom: 5
+    marginBottom: 5,
+    borderRadius: 5
     },
     buttonText: {
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'figtree'
     }
   });
