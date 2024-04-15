@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, View, Image, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Text, Dimensions } from 'react-native';
 import { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from './components/Header';
@@ -22,6 +22,7 @@ export default function App() {
   const [showGif, setShowGif] = useState(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
+  // fonts
   async function loadFonts() {
     await Font.loadAsync({
       'figtree': require('./assets/fonts/Figtree-VariableFont_wght.ttf'),
@@ -39,12 +40,15 @@ export default function App() {
     loadFontsAsync();
   }, []);
 
+  //clearAll functions
+
   function clearAll() {
     setMainCharacter("");
     setSupportingCharacter("");
     setVillain("");
     setLocation("");
 }
+
 
 // string to pass to social media buttons
 const pitch = mainCharacter && supportingCharacter && villain && location
@@ -190,6 +194,9 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
   );
 }
 
+
+  
+
 const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
@@ -204,12 +211,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     zIndex: 0
   },
+  gifWindow: {
+    position: 'absolute',
+    top: 0,
+    zIndex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
   gifImage: {
     marginTop: 20,
-    maxWidth: 300,
-    maxHeight: 200,
-    zIndex: 1,
-    flexDirection: 'column',
+    opacity: 0.9,
+    resizeMode: 'cover' 
   },
   buttonContainer: {
     flex: 1,
@@ -223,12 +236,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   generatedStory: {
-    maxWidth: 250,
+    maxWidth: 300,
     marginTop: 20,
   },
   storyText: {
     fontFamily: 'figtree',
-    fontSize: 18
+    fontSize: 20
   },
   instructionText: {
     fontFamily: 'figtreeItalic',
