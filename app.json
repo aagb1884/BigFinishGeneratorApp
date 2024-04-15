@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aagb1884.BigFinishGeneratorApp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.aagb1884.BigFinishGeneratorApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,9 +32,19 @@
       [
         "expo-font",
         {
-          "fonts": ["node_modules/@expo-google-fonts/Figtree/Figtree-VariableFont_wght.ttf"]
+          "fonts": [
+            "./assets/fonts/Figtree-VariableFont_wght.ttf",
+            "./assets/fonts/Figtree-Italic-VariableFont_wght.ttf",
+            "./assets/fonts/Figtree-Bold.ttf",
+            "./assets/fonts/Figtree-ExtraBold.ttf"
+          ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "baf90101-fc87-4f00-8c8a-df641078dca9"
+      }
+    }
   }
 }

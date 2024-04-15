@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, View, Image, Text, Dimensions } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Text } from 'react-native';
 import { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from './components/Header';
