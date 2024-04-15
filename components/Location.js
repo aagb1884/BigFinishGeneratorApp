@@ -41,7 +41,7 @@ export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded,
         function handleButtonClick() {
             setShowGif(true);
             playSound();
-            setGif(require('../assets/rtd_titles.gif'));
+            setGif(require('../assets/eighth_title.gif'));
         setTimeout(() => {
             getRandomThing(eventLocationList, previousLocation, setLocation);
             setShowGif(false);

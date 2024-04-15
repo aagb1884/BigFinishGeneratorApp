@@ -222,7 +222,9 @@ const styles = StyleSheet.create({
   gifImage: {
     marginTop: 20,
     opacity: 0.9,
-    resizeMode: 'cover' 
+    resizeMode: 'cover',
+    width: '100%',
+    height: 250,
   },
   buttonContainer: {
     flex: 1,
