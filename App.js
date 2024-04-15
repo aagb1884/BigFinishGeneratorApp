@@ -11,6 +11,7 @@ import Location from './components/Location';
 import ClearAll from './components/ClearAll';
 import ShareButton from './components/Share';
 import * as Font from 'expo-font';
+import Animated, { useSharedValue, useAnimatedStyle, Easing, withTiming } from 'react-native-reanimated';
 
 export default function App() {
   const [mainCharacter, setMainCharacter] = useState("");
@@ -50,9 +51,6 @@ const pitch = mainCharacter && supportingCharacter && villain && location
  ? `"At last, ${mainCharacter} and ${supportingCharacter} meet ${villain} in ${location}!"`
  : ''
  
-// function to pass to all list files to play audio on button press
-
-
   // function to pass to all list files to pick random string
   function getRandomThing(array, previousThing, stateFunction) {
     let randomIndex;
@@ -65,6 +63,38 @@ const pitch = mainCharacter && supportingCharacter && villain && location
     const selectedThing = array[randomIndex];
     stateFunction(selectedThing);
 }
+
+// fade in animation code
+const fadeOpacityMain = useSharedValue(0);
+const fadeOpacitySupporting = useSharedValue(0);
+const fadeOpacityVillain = useSharedValue(0);
+const fadeOpacityLocation = useSharedValue(0);
+
+const fadeInOutIn = (opacity) => {
+  opacity.value = withTiming(0, {
+    duration: 0,
+  });
+  opacity.value = withTiming(1, { 
+    duration: 3000, 
+    easing: Easing.linear, 
+}); 
+}
+
+const useFadeAnimation = (opacity) => {
+  return useAnimatedStyle(() => { 
+  return { 
+      opacity: opacity.value, 
+  }; 
+}); 
+}
+
+const animatedMainCharacterStyle = useFadeAnimation(fadeOpacityMain);
+const animatedSupportingCharacterStyle = useFadeAnimation(fadeOpacitySupporting);
+const animatedVillainStyle = useFadeAnimation(fadeOpacityVillain);
+const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
+
+
+
 
   return (
     <SafeAreaProvider>
@@ -86,28 +116,37 @@ const pitch = mainCharacter && supportingCharacter && villain && location
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
           setGif={setGif} 
-          fontsLoaded={fontsLoaded} />
+          fontsLoaded={fontsLoaded}
+          fadeInOutIn={fadeInOutIn}
+          fadeOpacityMain={fadeOpacityMain}
+          />
 
           <SupportingCharacter 
           setSupportingCharacter={setSupportingCharacter}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
           setGif={setGif} 
-          fontsLoaded={fontsLoaded} />
+          fontsLoaded={fontsLoaded} 
+          fadeInOutIn={fadeInOutIn}
+          fadeOpacitySupporting={fadeOpacitySupporting}/>
         
           <Villain 
           setVillain={setVillain}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
           setGif={setGif} 
-          fontsLoaded={fontsLoaded}/>
+          fontsLoaded={fontsLoaded}
+          fadeInOutIn={fadeInOutIn}
+          fadeOpacityVillain={fadeOpacityVillain}/>
         
           <Location 
           setLocation={setLocation}
           getRandomThing={getRandomThing}
           setShowGif={setShowGif}
           setGif={setGif} 
-          fontsLoaded={fontsLoaded}/>
+          fontsLoaded={fontsLoaded}
+          fadeInOutIn={fadeInOutIn}
+          fadeOpacityLocation={fadeOpacityLocation}/>
 
           <View style={styles.clearAllContainer}>
           <ClearAll clearAll={clearAll} 
@@ -120,19 +159,27 @@ const pitch = mainCharacter && supportingCharacter && villain && location
               {!mainCharacter && !supportingCharacter && !villain && !location && (
               <Text style={styles.instructionText}>Press all four buttons to get your next pitch.</Text>
               )}
+              <Animated.View style={animatedMainCharacterStyle}>
           {mainCharacter && <Text style={styles.storyText}>At last, {mainCharacter}</Text>}
+              </Animated.View>
+              <Animated.View style={animatedSupportingCharacterStyle}>
           {supportingCharacter && <Text style={styles.storyText}>and {supportingCharacter}</Text>}
+            </Animated.View>
+            <Animated.View style={animatedVillainStyle}>
           {villain && <Text style={styles.storyText}>will meet {villain}</Text>}
+              </Animated.View>
+              <Animated.View style={animatedLocationStyle}>
           {location && <Text style={styles.storyText}>in {location}</Text>}
-          </>
+              </Animated.View>
+            </>
             )}
-          </View>
+                  </View>
+                  </View>
 
           <View style={styles.sharing}>
             <ShareButton pitch={pitch} fontsLoaded={fontsLoaded} />
           </View>  
-          </View>
-          
+         
           
          
 

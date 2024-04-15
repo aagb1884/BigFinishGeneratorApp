@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function Villain({fontsLoaded, getRandomThing, setVillain, setShowGif, setGif}) {
+export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, getRandomThing, setVillain, setShowGif, setGif}) {
     const previousVillain = useRef(null);
 
     const villainList = [
@@ -25,7 +25,7 @@ export default function Villain({fontsLoaded, getRandomThing, setVillain, setSho
         'a Hypnotron',
         'Woke Davros',
         "Ian Levine's AI Hartnell",
-        'some new type of Dalek (so Nick Briggs can try out a new voice)',
+        'that big yellow Dalek',
         'Andrew Marr',
 
     ];
@@ -38,12 +38,13 @@ export default function Villain({fontsLoaded, getRandomThing, setVillain, setSho
          await sound.playAsync();
         }
         function handleButtonClick() {
-        setShowGif(true);
-        playSound();
-        setGif(require('../assets/mccoy_titles.gif'));
+            setShowGif(true);
+            playSound();
+            setGif(require('../assets/mccoy_titles.gif'));
         setTimeout(() => {
-        getRandomThing(villainList, previousVillain, setVillain);
-        setShowGif(false);
+            getRandomThing(villainList, previousVillain, setVillain);
+            setShowGif(false);
+            fadeInOutIn(fadeOpacityVillain);
     }, 5590)  
 }
 

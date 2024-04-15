@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function Location({fontsLoaded, getRandomThing, setLocation, setShowGif, setGif}) {
+export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded, getRandomThing, setLocation, setShowGif, setGif}) {
     const previousLocation = useRef(null);
 
     const eventLocationList = [
@@ -23,8 +23,8 @@ export default function Location({fontsLoaded, getRandomThing, setLocation, setS
         'a strange limbo world where nothing is as it seems.',
         'a space whale.',
         'the Netherfield ball.',
-        "harry sullivan's infanticide maze.",
-        "Charles Dicken's death bed",
+        "Harry Sullivan's infanticide maze.",
+        "Charles Dickens' death bed",
         'a softplay',
         'Stoke-on-Trent'
 
@@ -39,12 +39,13 @@ export default function Location({fontsLoaded, getRandomThing, setLocation, setS
          await sound.playAsync();
         }
         function handleButtonClick() {
-        setShowGif(true);
-        playSound();
-        setGif(require('../assets/rtd_titles.gif'));
+            setShowGif(true);
+            playSound();
+            setGif(require('../assets/rtd_titles.gif'));
         setTimeout(() => {
-        getRandomThing(eventLocationList, previousLocation, setLocation);
-        setShowGif(false);
+            getRandomThing(eventLocationList, previousLocation, setLocation);
+            setShowGif(false);
+            fadeInOutIn(fadeOpacityLocation);
     }, 3000)  
 }
 

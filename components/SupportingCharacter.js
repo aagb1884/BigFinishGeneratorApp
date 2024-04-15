@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function SupportingCharacter({fontsLoaded, getRandomThing, setSupportingCharacter, setShowGif, setGif}) {
+export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn, fontsLoaded, getRandomThing, setSupportingCharacter, setShowGif, setGif}) {
     const previousCharacter = useRef(null);
 
     const supportingCharacterList = [
@@ -21,7 +21,7 @@ export default function SupportingCharacter({fontsLoaded, getRandomThing, setSup
         'Gilbert M',
         'Courtney Pine',
         'the Ogron-Eater',
-        "commodore 'tonker' travers",
+        "Commodore 'Tonker' Travers",
         'CyberBrig',
         'the Afghan kid Danny Pink killed',
         'the cow the Doctor asked about time scanners',
@@ -41,11 +41,12 @@ export default function SupportingCharacter({fontsLoaded, getRandomThing, setSup
 
     function handleButtonClick() {
             setShowGif(true);
-        playSound();
-        setGif(require('../assets/capaldi_clocks.gif'));
+            playSound();
+            setGif(require('../assets/capaldi_clocks.gif'));
         setTimeout(() => {
             getRandomThing(supportingCharacterList, previousCharacter, setSupportingCharacter);
             setShowGif(false);
+            fadeInOutIn(fadeOpacitySupporting);
         }, 3000)  
     }
 

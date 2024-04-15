@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function MainCharacter({fontsLoaded, getRandomThing, setMainCharacter, setShowGif, setGif}) {
+export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoaded, getRandomThing, setMainCharacter, setShowGif, setGif}) {
     const previousCharacter = useRef(null);
     
 
@@ -15,20 +15,20 @@ export default function MainCharacter({fontsLoaded, getRandomThing, setMainChara
         'Captain Archibald Hamish Lethbridge-Stewart',
         'an unassuming writer/director/producer (plus actor) in his sixties',
         'Pigbin Josh',
-        "The Companions' Rebound Support Group", 
+        "the Companions' Rebound Support Group", 
         'Young Soldeed',
         "the painting of the Third Doctor from 'Timelash'",  
         'Elton Pope',
         'Lucy Saxon',
         'the Kerblam HR team',
-        "Someone Jacob Dudman can't quite do the voice for",
+        "someone Jacob Dudman can't quite do the voice for",
         "the Arabella Weir Doctor",
         'Nardole',
         'Morton Dill',
         'Tallulah and Laszlo',
         "an Unbound Doctor where he's played as Mr Pastry",
         'Bessie',
-        'The Shadow Proclamation',
+        'the Shadow Proclamation',
         'Doom',
         "that big Irish cat from 'Gridlock'",
         
@@ -49,6 +49,7 @@ export default function MainCharacter({fontsLoaded, getRandomThing, setMainChara
         setTimeout(() => {
             getRandomThing(mainCharacterList, previousCharacter, setMainCharacter);
             setShowGif(false);
+            fadeInOutIn(fadeOpacityMain);
         }, 3000)  
     }
 
