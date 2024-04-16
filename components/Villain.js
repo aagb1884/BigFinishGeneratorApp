@@ -14,7 +14,7 @@ export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, g
         'the Timewyrm',
         'General Cobb',
         'evil gas or something',
-        'the Birmingham six',
+        'the Birmingham Six',
         'the War Engin',
         "Turlough's solicitor",
         'Mark Lawrenson',
