@@ -19,6 +19,9 @@
       "bundleIdentifier": "com.aagb1884.BigFinishGeneratorApp",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "The app does not ask for or need to use your microphone to work.",
+        "ITSAppUsesNonExemptEncryption": "False"
+      },
+      "privacyManifests": {
         "NSPrivacyAccessedAPICategoryDiskSpace": "7D9E.1",
         "NSPrivacyAccessedAPICategoryFileTimestamp": "0A2A.1",
         "NSPrivacyAccessedAPICategorySystemBootTime": "3D61.1",
