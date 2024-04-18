@@ -27,7 +27,11 @@ export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, g
         "Ian Levine's AI Hartnell",
         'that big yellow Dalek',
         'Andrew Marr',
-
+        'Two-Armed Condo',
+        "Gareth Roberts' Twitter Feed",
+        "a terrifying renegade Time Lord called 'Timmy the Shit'",
+        'James Dreyfus',
+        'a team-up of all the Pertwee era Civil Servants',
     ];
 
     async function playSound() {

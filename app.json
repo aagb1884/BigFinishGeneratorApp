@@ -49,7 +49,18 @@
             "./assets/fonts/Figtree-ExtraBold.ttf"
           ]
         }
-      ]
+      ],
+      "expo-build-properties",
+      {
+        "android": {
+          "compileSdkVersion": 31,
+          "targetSdkVersion": 31,
+          "buildToolsVersion": "31.0.0"
+        },
+        "ios": {
+          "deploymentTarget": "12.0"
+        }
+      }
     ],
     "extra": {
       "eas": {

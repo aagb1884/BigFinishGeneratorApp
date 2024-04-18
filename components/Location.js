@@ -24,9 +24,16 @@ export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded,
         'a space whale.',
         'the Netherfield ball.',
         "Harry Sullivan's infanticide maze.",
-        "Charles Dickens' death bed",
-        'a softplay',
-        'Stoke-on-Trent'
+        "Charles Dickens' death bed.",
+        'a softplay.',
+        'Stoke-on-Trent.',
+        'the Death Zone.',
+        "Adric's pocket.",
+        "the Master's Mind Palace.",
+        'the Land of Non-Fiction.',
+        'a karaoke bar.',
+        'a small, poorly staffed garden centre.',
+        
 
     ];
 

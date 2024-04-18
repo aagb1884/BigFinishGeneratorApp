@@ -8,6 +8,7 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
 
     const mainCharacterList = [
         'The Tenth Doctor',
+        'The Fourteenth Doctor pretending to be the Tenth Doctor',
         "The Tenth Doctor but it's Jackie Tyler in disguise",
         'River Song',
         'Dalek Caan',
@@ -31,6 +32,9 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
         'the Shadow Proclamation',
         'Doom',
         "that big Irish cat from 'Gridlock'",
+        'Tecteun',
+        'a sentient caravan that turns out to be Dodo',
+        'K9 trapped in the body of a small girl',
         
     ];
     

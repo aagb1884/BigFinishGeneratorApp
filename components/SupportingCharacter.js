@@ -11,7 +11,7 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
         "that pirate who disappears for ages",
         'Angie and Artie Maitland',
         "Richard Nixon",
-        "'Eat My Salad' guy",
+        "the 'Eat My Salad' guy",
         "Commander Maxil's hat",
         "Baby Sergeant Benton",
         'Pete the Morgue Attendant',
@@ -28,7 +28,10 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
         "Maria's Dad",
         "Nerys",
         "Bill's Foster Mum",
-        "Boss Baby"
+        "Boss Baby",
+        "An Increasingly Wounded Davina McCall",
+        'Gerry Adams',
+        'a cat called Clive Owen'
     ];
 
     async function playSound() {
