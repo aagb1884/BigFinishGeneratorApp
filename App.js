@@ -52,7 +52,7 @@ export default function App() {
 
 // string to pass to social media buttons
 const pitch = mainCharacter && supportingCharacter && villain && location
- ? `"At last, ${mainCharacter} and ${supportingCharacter} meet ${villain} in ${location}!"`
+ ? `Pitches like: "At last, ${mainCharacter} and ${supportingCharacter} meet ${villain} in ${location}"`
  : ''
  
   // function to pass to all list files to pick random string
@@ -152,10 +152,7 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
           fadeInOutIn={fadeInOutIn}
           fadeOpacityLocation={fadeOpacityLocation}/>
 
-          <View style={styles.clearAllContainer}>
-          <ClearAll clearAll={clearAll} 
-          fontsLoaded={fontsLoaded} />
-          </View>
+        
           
           <View style={styles.generatedStory}>
             {fontsLoaded && (
@@ -178,6 +175,11 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
             </>
             )}
                   </View>
+
+                  <View style={styles.clearAllContainer}>
+          <ClearAll clearAll={clearAll} 
+          fontsLoaded={fontsLoaded} />
+          </View>
                   </View>
 
           <View style={styles.sharing}>
@@ -224,7 +226,7 @@ const styles = StyleSheet.create({
     opacity: 0.9,
     resizeMode: 'cover',
     width: '100%',
-    height: 250,
+    height: 255,
   },
   buttonContainer: {
     flex: 1,
@@ -247,7 +249,9 @@ const styles = StyleSheet.create({
   },
   instructionText: {
     fontFamily: 'figtreeItalic',
-    color: '#2C968F',
-    textAlign: 'center'
+    color: '#419595',
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold'
   }
 });

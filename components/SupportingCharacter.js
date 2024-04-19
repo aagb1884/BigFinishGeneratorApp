@@ -29,9 +29,11 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
         "Nerys",
         "Bill's Foster Mum",
         "Boss Baby",
-        "An Increasingly Wounded Davina McCall",
+        "an Increasingly Wounded Davina McCall",
         'Gerry Adams',
-        'a cat called Clive Owen'
+        'a cat called Clive Owen',
+        "characters similar to - but legally distinct from - ones in 'Thunderbirds' called Jaff Treacy and Broins",
+        
     ];
 
     async function playSound() {
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'figtree'
+        fontFamily: 'figtree',
+        fontSize: 18
     }
   });

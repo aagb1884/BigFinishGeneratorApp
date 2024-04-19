@@ -33,8 +33,8 @@ export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded,
         'the Land of Non-Fiction.',
         'a karaoke bar.',
         'a small, poorly staffed garden centre.',
+        'the year Nick Briggs last enjoyed Doctor Who (1976)',
         
-
     ];
 
 
@@ -87,6 +87,7 @@ borderRadius: 5
 buttonText: {
 color: 'white',
 textAlign: 'center',
-fontFamily: 'figtree'
+fontFamily: 'figtree',
+fontSize: 18
 }
 });

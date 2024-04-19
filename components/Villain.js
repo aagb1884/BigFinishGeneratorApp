@@ -30,8 +30,10 @@ export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, g
         'Two-Armed Condo',
         "Gareth Roberts' Twitter Feed",
         "a terrifying renegade Time Lord called 'Timmy the Shit'",
-        'James Dreyfus',
         'a team-up of all the Pertwee era Civil Servants',
+        'a boom mic',
+        'Henry Kissinger',
+        'Yvonne Hartman'
     ];
 
     async function playSound() {
@@ -83,6 +85,7 @@ borderRadius: 5
 buttonText: {
 color: 'white',
 textAlign: 'center',
-fontFamily: 'figtree'
+fontFamily: 'figtree',
+fontSize: 18
 }
 });

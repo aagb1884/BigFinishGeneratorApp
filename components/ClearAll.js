@@ -20,20 +20,21 @@ export default function ClearAll({clearAll, fontsLoaded}) {
 
 const styles = StyleSheet.create({
     button: {
-        marginTop: 30,
+        marginTop: 10,
         padding: 10,
-        backgroundColor: '#2C968F',
+        backgroundColor: '#419595',
         width: 250,
         position: 'relative',
         top: 0,
         left: 0,
-        marginBottom: 5,
+        
         borderRadius: 5
         
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'figtree'
+        fontFamily: 'figtree',
+        fontSize: 18
     }
   });

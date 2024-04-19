@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Share, View, Button} from 'react-native';
+import {Alert, Share, View, Button, StyleSheet} from 'react-native';
 
 export default function ShareButton ({pitch}) {
    
@@ -27,8 +27,16 @@ export default function ShareButton ({pitch}) {
   };
   return (
     <View style={{marginTop: 50}}>
-      <Button onPress={onShare} title="Share" />
+      <Button style={styles.clearButton} onPress={onShare} title="Share" />
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  clearButton: {
+    backgroundColor: 'blue',
+    borderRadius: 5,
+    padding: 10,
+    width: 150,
+  }
+});

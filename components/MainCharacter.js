@@ -7,9 +7,9 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
     
 
     const mainCharacterList = [
-        'The Tenth Doctor',
-        'The Fourteenth Doctor pretending to be the Tenth Doctor',
-        "The Tenth Doctor but it's Jackie Tyler in disguise",
+        'the Tenth Doctor',
+        'the Tenth Doctor but its the Fourteenth Doctor pretending to be the Tenth Doctor',
+        "the Tenth Doctor but it's Jackie Tyler pretending to be the Tenth Doctor",
         'River Song',
         'Dalek Caan',
         'The Morbius Doctors',
@@ -35,7 +35,7 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
         'Tecteun',
         'a sentient caravan that turns out to be Dodo',
         'K9 trapped in the body of a small girl',
-        
+        'Alpha Centauri'
     ];
     
     async function playSound() {
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'figtree'
+        fontFamily: 'figtree',
+        fontSize: 18
     }
   });

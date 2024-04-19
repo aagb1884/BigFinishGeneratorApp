@@ -1,5 +1,7 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default function Header({fontsLoaded}) {
 
@@ -39,31 +41,31 @@ const styles = StyleSheet.create({
     },
     h1: {
         width: '70%',
-        margin: 25,
+        margin: windowWidth * 0.08,
     },
     headerText: {
-        fontSize: 30,
+        fontSize: windowWidth * 0.06,
         color: 'white',
-        paddingTop: 10,
+        paddingTop: windowHeight * 0.01,
         fontFamily: 'figtree'
     },
     boldHeaderText: {
-        fontSize: 40,
+        fontSize: windowWidth * 0.1,
         fontWeight: '900',
         color: 'white',
-        paddingTop: 10,
+        paddingTop: windowHeight * 0.01,
         fontFamily: 'figtreeXBold'
     },
     subheader: {
         width: '30%',
-        marginTop: 20,
-        paddingRight: 30
+        marginTop: windowHeight * 0.02, 
+        paddingRight: windowWidth * 0.14,
     },
     subheaderText: {
         fontFamily: 'figtreeItalic',
         color: 'white',
         fontStyle: 'italic',
-        fontSize: 14,
-        paddingTop: 10
+        fontSize: windowWidth * 0.03, 
+        paddingTop: windowHeight * 0.015,
     }
   });

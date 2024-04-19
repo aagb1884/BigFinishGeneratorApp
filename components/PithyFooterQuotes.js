@@ -16,7 +16,10 @@ export default function PithyFooterQuotes ({fontsLoaded}) {
         "If the russian federation is reading this, we're interested",
         "if McGann gets his own tv series we're recasting him",
         "we've run out of Doctors for River Song to meet",
-        "honestly if you're free and in the area you can play the First Doctor"
+        "honestly if you're free and in the area you can play the First Doctor",
+        "philip hinchcliffe won't do the morbius doctors boxset unless he can do all the voices",
+        "to whoever keeps leaving us the voicemail messages: your jodie impression is bad and you should feel bad",
+        "we really do love stories. just not the ones Chris Bidmead sends us"
     ];
 
     const randomIndex = Math.floor(Math.random() * footerQuotes.length);
