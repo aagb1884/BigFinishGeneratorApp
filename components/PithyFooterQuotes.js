@@ -19,7 +19,7 @@ export default function PithyFooterQuotes ({fontsLoaded}) {
         "honestly if you're free and in the area you can play the First Doctor",
         "philip hinchcliffe won't do the morbius doctors boxset unless he can do all the voices",
         "to whoever keeps leaving us the voicemail messages: your jodie impression is bad and you should feel bad",
-        "we really do love stories. just not the ones Chris Bidmead sends us"
+        "we love stories, unless Chris Bidmead is reading this"
     ];
 
     const randomIndex = Math.floor(Math.random() * footerQuotes.length);
