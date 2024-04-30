@@ -15,6 +15,7 @@
       "**/*"
     ],
     "ios": {
+      "requireFullScreen": true,
       "supportsTablet": true,
       "bundleIdentifier": "com.aagb1884.BigFinishGeneratorApp",
       "infoPlist": {

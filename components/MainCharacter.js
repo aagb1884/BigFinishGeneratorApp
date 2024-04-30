@@ -35,7 +35,9 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
         'Tecteun',
         'a sentient caravan that turns out to be Dodo',
         'K9 trapped in the body of a small girl',
-        'Alpha Centauri'
+        'Alpha Centauri',
+        'the Solitract',
+        'Jackson Lake'
     ];
     
     async function playSound() {

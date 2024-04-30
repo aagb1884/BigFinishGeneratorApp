@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, View, Image, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Text, Platform } from 'react-native';
 import { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from './components/Header';
@@ -12,6 +12,7 @@ import ClearAll from './components/ClearAll';
 import ShareButton from './components/Share';
 import * as Font from 'expo-font';
 import Animated, { useSharedValue, useAnimatedStyle, Easing, withTiming } from 'react-native-reanimated';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function App() {
   const [mainCharacter, setMainCharacter] = useState("");
@@ -21,6 +22,20 @@ export default function App() {
   const [gif, setGif] = useState("");
   const [showGif, setShowGif] = useState(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  //orientation
+
+  useEffect(() => {
+    async function unlockOrientation(){
+      if (Platform.isPad) {
+        await ScreenOrientation.unlockAsync();
+      } else if (Platform.OS === 'android' && Platform.isTablet) {
+        await ScreenOrientation.unlockAsync();
+      }
+    } unlockOrientation();
+  }, [])
+
+  
 
   // fonts
   async function loadFonts() {
@@ -250,7 +265,6 @@ const styles = StyleSheet.create({
   instructionText: {
     fontFamily: 'figtreeItalic',
     color: '#419595',
-    textAlign: 'center',
     fontSize: 18,
     fontWeight: 'bold'
   }

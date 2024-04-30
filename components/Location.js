@@ -33,8 +33,10 @@ export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded,
         'the Land of Non-Fiction.',
         'a karaoke bar.',
         'a small, poorly staffed garden centre.',
-        'the year Nick Briggs last enjoyed Doctor Who (1976)',
-        
+        'the year Nick Briggs last enjoyed Doctor Who (1976).',
+        'the divergent universe.',
+        'Uzbekistan.',
+        "in the studio where Alanis Morissette is recording 'You Oughta Know'."
     ];
 
 

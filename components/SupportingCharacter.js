@@ -29,12 +29,12 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
         "Nerys",
         "Bill's Foster Mum",
         "Boss Baby",
-        "an Increasingly Wounded Davina McCall",
+        "an increasingly wounded Davina McCall",
         'Gerry Adams',
         'a cat called Clive Owen',
         "characters similar to - but legally distinct from - ones in 'Thunderbirds' called Jaff Treacy and Broins",
-        
-    ];
+        'Wolsey',
+        ];
 
     async function playSound() {
         console.log('Loading Sound');
