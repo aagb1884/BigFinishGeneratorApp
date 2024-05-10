@@ -2,7 +2,8 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, getRandomThing, setVillain, setShowGif, setGif}) {
+export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, getRandomThing, 
+    setVillain, villainCounter, setVillainCounter, setShowGif, setGif, incrementCounter}) {
     const previousVillain = useRef(null);
 
     const villainList = [
@@ -49,6 +50,7 @@ export default function Villain({fadeOpacityVillain, fadeInOutIn, fontsLoaded, g
             setGif(require('../assets/mccoy_titles.gif'));
         setTimeout(() => {
             getRandomThing(villainList, previousVillain, setVillain);
+            incrementCounter(setVillainCounter, villainCounter);
             setShowGif(false);
             fadeInOutIn(fadeOpacityVillain);
     }, 5590)  
@@ -62,7 +64,7 @@ return (
     >
         {fontsLoaded && (
               <>
-        <Text style={styles.buttonText}>Get Villain</Text>
+        <Text style={styles.buttonText}>{villainCounter >= 1 ? 'Get New Villain' : 'Get Villain'}</Text>
         </>
             )}
     </Pressable>
@@ -72,20 +74,24 @@ return (
 
 const styles = StyleSheet.create({
 button: {
-marginTop: 10,
+margin: 5,
 padding: 10,
 backgroundColor: '#972C34',
-width: 300,
+width: 170,
+height: 100,
 position: 'relative',
 top: 0,
 left: 0,
 marginBottom: 5,
-borderRadius: 5
+borderRadius: 5,
+justifyContent: 'center',
+alignItems: 'center',
+flex: 1
 },
 buttonText: {
 color: 'white',
 textAlign: 'center',
 fontFamily: 'figtree',
-fontSize: 18
+fontSize: 20
 }
 });

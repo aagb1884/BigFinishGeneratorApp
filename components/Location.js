@@ -2,7 +2,8 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded, getRandomThing, setLocation, setShowGif, setGif}) {
+export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded, getRandomThing, 
+    setLocation, locationCounter, setLocationCounter, setShowGif, setGif, incrementCounter}) {
     const previousLocation = useRef(null);
 
     const eventLocationList = [
@@ -53,6 +54,7 @@ export default function Location({fadeOpacityLocation, fadeInOutIn, fontsLoaded,
             setGif(require('../assets/eighth_title.gif'));
         setTimeout(() => {
             getRandomThing(eventLocationList, previousLocation, setLocation);
+            incrementCounter(setLocationCounter, locationCounter);
             setShowGif(false);
             fadeInOutIn(fadeOpacityLocation);
     }, 3000)  
@@ -66,7 +68,7 @@ return (
     >
         {fontsLoaded && (
               <>
-        <Text style={styles.buttonText}>Get Location</Text>
+        <Text style={styles.buttonText}>{locationCounter >= 1 ? 'Get New Location' : 'Get Location'}</Text>
         </>
             )}
     </Pressable>
@@ -76,20 +78,24 @@ return (
 
 const styles = StyleSheet.create({
 button: {
-marginTop: 10,
+margin: 5,
 padding: 10,
 backgroundColor: '#972C34',
-width: 300,
+width: 170,
+height: 100,
 position: 'relative',
 top: 0,
 left: 0,
 marginBottom: 5,
-borderRadius: 5
+borderRadius: 5,
+justifyContent: 'center',
+alignItems: 'center',
+flex: 1
 },
 buttonText: {
 color: 'white',
 textAlign: 'center',
 fontFamily: 'figtree',
-fontSize: 18
+fontSize: 20
 }
 });

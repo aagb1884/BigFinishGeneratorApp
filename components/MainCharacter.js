@@ -2,7 +2,8 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoaded, getRandomThing, setMainCharacter, setShowGif, setGif}) {
+export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoaded, getRandomThing, mainCharacterCounter,
+                                    setMainCharacter, setMainCharacterCounter, setShowGif, setGif, incrementCounter}) {
     const previousCharacter = useRef(null);
     
 
@@ -39,6 +40,8 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
         'the Solitract',
         'Jackson Lake'
     ];
+
+    
     
     async function playSound() {
         console.log('Loading Sound');
@@ -54,6 +57,7 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
         setGif(require('../assets/untempered_schism.gif'));
         setTimeout(() => {
             getRandomThing(mainCharacterList, previousCharacter, setMainCharacter);
+            incrementCounter(setMainCharacterCounter, mainCharacterCounter);
             setShowGif(false);
             fadeInOutIn(fadeOpacityMain);
         }, 3000)  
@@ -67,7 +71,7 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
             >
                 {fontsLoaded && (
               <>
-                <Text style={styles.buttonText}>Get Main Character</Text>
+                <Text style={styles.buttonText}>{mainCharacterCounter >= 1 ? 'Get New Main Character' : 'Get Main Character'}</Text>
                 </>
             )}
             </Pressable>
@@ -77,20 +81,25 @@ export default function MainCharacter({ fadeOpacityMain, fadeInOutIn, fontsLoade
 
 const styles = StyleSheet.create({
     button: {
-    marginTop: 10,
+    margin: 5,
     padding: 10,
     backgroundColor: '#972C34',
-    width: 300,
+    width: 170,
+    height: 100,
     position: 'relative',
     top: 0,
     left: 0,
     marginBottom: 5,
-    borderRadius: 5
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
         fontFamily: 'figtree',
-        fontSize: 18
+        fontSize: 20,
+        
     }
   });

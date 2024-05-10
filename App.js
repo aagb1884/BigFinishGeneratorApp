@@ -16,9 +16,13 @@ import * as ScreenOrientation from 'expo-screen-orientation';
 
 export default function App() {
   const [mainCharacter, setMainCharacter] = useState("");
+  const [mainCharacterCounter, setMainCharacterCounter] = useState(0);
   const [supportingCharacter, setSupportingCharacter] = useState("");
+  const [supportingCharacterCounter, setSupportingCharacterCounter] = useState(0);
   const [villain, setVillain] = useState("");
+  const [villainCounter, setVillainCounter] = useState(0);
   const [location, setLocation] = useState("");
+  const [locationCounter, setLocationCounter] = useState(0);
   const [gif, setGif] = useState("");
   const [showGif, setShowGif] = useState(false);
   const [fontsLoaded, setFontsLoaded] = useState(false);
@@ -61,6 +65,10 @@ export default function App() {
     setSupportingCharacter("");
     setVillain("");
     setLocation("");
+    setMainCharacterCounter(0);
+    setSupportingCharacterCounter(0);
+    setVillainCounter(0);
+    setLocationCounter(0);
 }
 
 
@@ -111,7 +119,9 @@ const animatedSupportingCharacterStyle = useFadeAnimation(fadeOpacitySupporting)
 const animatedVillainStyle = useFadeAnimation(fadeOpacityVillain);
 const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
 
-
+const incrementCounter = (setState, state) => {
+  setState(state + 1);
+};
 
 
   return (
@@ -129,6 +139,8 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
           </View>
           
           <View style={styles.buttonContainer}>
+            <View style={styles.storyButtons}>
+                <View style={styles.topRow}>
           <MainCharacter
           setMainCharacter={setMainCharacter}
           getRandomThing={getRandomThing}
@@ -137,6 +149,9 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
           fontsLoaded={fontsLoaded}
           fadeInOutIn={fadeInOutIn}
           fadeOpacityMain={fadeOpacityMain}
+          mainCharacterCounter={mainCharacterCounter}
+          setMainCharacterCounter={setMainCharacterCounter}
+          incrementCounter={incrementCounter}
           />
 
           <SupportingCharacter 
@@ -146,8 +161,13 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
           setGif={setGif} 
           fontsLoaded={fontsLoaded} 
           fadeInOutIn={fadeInOutIn}
-          fadeOpacitySupporting={fadeOpacitySupporting}/>
-        
+          fadeOpacitySupporting={fadeOpacitySupporting}
+          supportingCharacterCounter={supportingCharacterCounter}
+          setSupportingCharacterCounter={setSupportingCharacterCounter}
+          incrementCounter={incrementCounter}
+          />
+              </View>
+              <View style={styles.bottomRow}>
           <Villain 
           setVillain={setVillain}
           getRandomThing={getRandomThing}
@@ -155,7 +175,11 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
           setGif={setGif} 
           fontsLoaded={fontsLoaded}
           fadeInOutIn={fadeInOutIn}
-          fadeOpacityVillain={fadeOpacityVillain}/>
+          fadeOpacityVillain={fadeOpacityVillain}
+          villainCounter={villainCounter}
+          setVillainCounter={setVillainCounter}
+          incrementCounter={incrementCounter}
+          />
         
           <Location 
           setLocation={setLocation}
@@ -164,8 +188,13 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
           setGif={setGif} 
           fontsLoaded={fontsLoaded}
           fadeInOutIn={fadeInOutIn}
-          fadeOpacityLocation={fadeOpacityLocation}/>
-
+          fadeOpacityLocation={fadeOpacityLocation}
+          locationCounter={locationCounter}
+          setLocationCounter={setLocationCounter}
+          incrementCounter={incrementCounter}
+          />
+            </View>
+          </View>
         
           
           <View style={styles.generatedStory}>
@@ -254,7 +283,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 35,
+  },
+  storyButtons: {
+    flexDirection: 'column',
+    marginHorizontal: 'auto',
+  },
+  topRow: {
+    flexDirection: 'row',
+  },
+  bottomRow: {
+    flexDirection: 'row',
   },
   clearAllContainer: {
     marginTop: 10,
@@ -265,12 +304,12 @@ const styles = StyleSheet.create({
   },
   storyText: {
     fontFamily: 'figtree',
-    fontSize: 20
+    fontSize: 22
   },
   instructionText: {
     fontFamily: 'figtreeItalic',
     color: '#419595',
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold'
   }
 });

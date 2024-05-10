@@ -2,7 +2,8 @@ import { View, Pressable, StyleSheet, Text } from "react-native";
 import { Audio } from 'expo-av';
 import { useRef } from "react";
 
-export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn, fontsLoaded, getRandomThing, setSupportingCharacter, setShowGif, setGif}) {
+export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn, fontsLoaded, getRandomThing, 
+    setSupportingCharacter, setSupportingCharacterCounter, supportingCharacterCounter, setShowGif, setGif, incrementCounter}) {
     const previousCharacter = useRef(null);
 
     const supportingCharacterList = [
@@ -50,6 +51,7 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
             setGif(require('../assets/capaldi_clocks.gif'));
         setTimeout(() => {
             getRandomThing(supportingCharacterList, previousCharacter, setSupportingCharacter);
+            incrementCounter(setSupportingCharacterCounter, supportingCharacterCounter)
             setShowGif(false);
             fadeInOutIn(fadeOpacitySupporting);
         }, 3000)  
@@ -63,7 +65,7 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
             >
                 {fontsLoaded && (
               <>
-                <Text style={styles.buttonText}>Get Supporting Character</Text>
+                <Text style={styles.buttonText}>{supportingCharacterCounter >= 1 ? 'Get New Supporting Character' : 'Get Supporting Character'}</Text>
                 </>
             )}
             </Pressable>
@@ -73,20 +75,24 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
 
 const styles = StyleSheet.create({
     button: {
-    marginTop: 10,
+    margin: 5,
     padding: 10,
     backgroundColor: '#972C34',
-    width: 300,
+    width: 170,
+    height: 100,
     position: 'relative',
     top: 0,
     left: 0,
     marginBottom: 5,
-    borderRadius: 5
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
         fontFamily: 'figtree',
-        fontSize: 18
+        fontSize: 20,
     }
   });
