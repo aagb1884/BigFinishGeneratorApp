@@ -24,7 +24,6 @@ export default function App() {
   const [fontsLoaded, setFontsLoaded] = useState(false);
 
   //orientation
-
   useEffect(() => {
     async function unlockOrientation(){
       if (Platform.isPad) {
@@ -190,15 +189,21 @@ const animatedLocationStyle = useFadeAnimation(fadeOpacityLocation);
             </>
             )}
                   </View>
-
-                  <View style={styles.clearAllContainer}>
-          <ClearAll clearAll={clearAll} 
-          fontsLoaded={fontsLoaded} />
+                
+                <View style={styles.clearAllContainer}>
+                  
+                {(mainCharacter || supportingCharacter || villain || location) && (
+                <ClearAll clearAll={clearAll} 
+                fontsLoaded={fontsLoaded} />
+                )} 
+                </View>
+                  
           </View>
-                  </View>
 
           <View style={styles.sharing}>
+            {mainCharacter && supportingCharacter && villain && location && (
             <ShareButton pitch={pitch} fontsLoaded={fontsLoaded} />
+            )}
           </View>  
          
           
