@@ -5,7 +5,7 @@ export default function ClearAll({clearAll, fontsLoaded}) {
     return ( 
         <View>
             <Pressable
-            style={styles.button}
+            style={styles.clearAllButton}
             onPress={clearAll}
             >
                  {fontsLoaded && (
@@ -19,22 +19,25 @@ export default function ClearAll({clearAll, fontsLoaded}) {
 }
 
 const styles = StyleSheet.create({
-    button: {
-        marginTop: 10,
+    clearAllButton: {
+        margin: 5,
         padding: 10,
         backgroundColor: '#419595',
-        width: 250,
+        width: 170,
+        height: 50,
         position: 'relative',
         top: 0,
         left: 0,
-        
-        borderRadius: 5
-        
+        marginBottom: 5,        
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
     },
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'figtree',
-        fontSize: 18
+        fontFamily: 'figtreeBold',
+        fontSize: 20
     }
   });

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ScrollView, View, Image, Text, Platform } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Text, Platform, PixelRatio } from 'react-native';
 import { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from './components/Header';
@@ -57,6 +57,9 @@ export default function App() {
     }
     loadFontsAsync();
   }, []);
+
+const fontScale = PixelRatio.getFontScale();
+const getFontSize = size => size / fontScale;
 
   //clearAll functions
 
@@ -139,8 +142,10 @@ const incrementCounter = (setState, state) => {
           </View>
           
           <View style={styles.buttonContainer}>
-            <View style={styles.storyButtons}>
-                <View style={styles.topRow}>
+          
+          <View style={styles.storyButtons}>
+                
+              <View style={styles.topRow}>
           <MainCharacter
           setMainCharacter={setMainCharacter}
           getRandomThing={getRandomThing}
@@ -152,6 +157,7 @@ const incrementCounter = (setState, state) => {
           mainCharacterCounter={mainCharacterCounter}
           setMainCharacterCounter={setMainCharacterCounter}
           incrementCounter={incrementCounter}
+          
           />
 
           <SupportingCharacter 
@@ -165,9 +171,11 @@ const incrementCounter = (setState, state) => {
           supportingCharacterCounter={supportingCharacterCounter}
           setSupportingCharacterCounter={setSupportingCharacterCounter}
           incrementCounter={incrementCounter}
+          getFontSize={getFontSize}
           />
-              </View>
-              <View style={styles.bottomRow}>
+          </View>
+
+          <View style={styles.middleRow}>
           <Villain 
           setVillain={setVillain}
           getRandomThing={getRandomThing}
@@ -179,6 +187,7 @@ const incrementCounter = (setState, state) => {
           villainCounter={villainCounter}
           setVillainCounter={setVillainCounter}
           incrementCounter={incrementCounter}
+          getFontSize={getFontSize}
           />
         
           <Location 
@@ -192,11 +201,30 @@ const incrementCounter = (setState, state) => {
           locationCounter={locationCounter}
           setLocationCounter={setLocationCounter}
           incrementCounter={incrementCounter}
+          getFontSize={getFontSize}
           />
-            </View>
           </View>
-        
           
+
+          <View style={styles.bottomRow}>
+
+            
+                  {(mainCharacter || supportingCharacter || villain || location) && (
+                  <ClearAll clearAll={clearAll} 
+                  fontsLoaded={fontsLoaded} />
+                  )} 
+            
+              {mainCharacter && supportingCharacter && villain && location && (
+              <ShareButton pitch={pitch} fontsLoaded={fontsLoaded} />
+              )}
+          
+
+          </View>
+
+        </View>
+        
+        
+
           <View style={styles.generatedStory}>
             {fontsLoaded && (
               <>
@@ -204,38 +232,24 @@ const incrementCounter = (setState, state) => {
               <Text style={styles.instructionText}>Press all four buttons to get your next pitch.</Text>
               )}
               <Animated.View style={animatedMainCharacterStyle}>
-          {mainCharacter && <Text style={styles.storyText}>At last, {mainCharacter}</Text>}
+          {mainCharacter && <Text style={[{fontSize: getFontSize(20)}, styles.storyText,]}>At last, {mainCharacter}</Text>}
               </Animated.View>
               <Animated.View style={animatedSupportingCharacterStyle}>
-          {supportingCharacter && <Text style={styles.storyText}>and {supportingCharacter}</Text>}
+          {supportingCharacter && <Text style={[{fontSize: getFontSize(20)}, styles.storyText,]}>and {supportingCharacter}</Text>}
             </Animated.View>
             <Animated.View style={animatedVillainStyle}>
-          {villain && <Text style={styles.storyText}>will meet {villain}</Text>}
+          {villain && <Text style={[{fontSize: getFontSize(20)}, styles.storyText,]}>will meet {villain}</Text>}
               </Animated.View>
               <Animated.View style={animatedLocationStyle}>
-          {location && <Text style={styles.storyText}>in {location}</Text>}
+          {location && <Text style={[{fontSize: getFontSize(20)}, styles.storyText,]}>in {location}</Text>}
               </Animated.View>
             </>
             )}
-                  </View>
+           </View>
                 
-                <View style={styles.clearAllContainer}>
-                  
-                {(mainCharacter || supportingCharacter || villain || location) && (
-                <ClearAll clearAll={clearAll} 
-                fontsLoaded={fontsLoaded} />
-                )} 
-                </View>
-                  
-          </View>
+               
 
-          <View style={styles.sharing}>
-            {mainCharacter && supportingCharacter && villain && location && (
-            <ShareButton pitch={pitch} fontsLoaded={fontsLoaded} />
-            )}
-          </View>  
-         
-          
+          </View>
          
 
       </View>
@@ -292,19 +306,20 @@ const styles = StyleSheet.create({
   topRow: {
     flexDirection: 'row',
   },
-  bottomRow: {
+  middleRow: {
     flexDirection: 'row',
   },
-  clearAllContainer: {
-    marginTop: 10,
+  bottomRow: {
+    flexDirection: 'row',
+    marginTop: 16,
   },
   generatedStory: {
     maxWidth: 300,
     marginTop: 20,
   },
   storyText: {
-    fontFamily: 'figtree',
-    fontSize: 22
+    textAlign: 'left',
+    fontFamily: 'figtreeBold',
   },
   instructionText: {
     fontFamily: 'figtreeItalic',

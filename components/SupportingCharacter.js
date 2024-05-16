@@ -35,6 +35,7 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
         'a cat called Clive Owen',
         "characters similar to - but legally distinct from - ones in 'Thunderbirds' called Jaff Treacy and Broins",
         'Wolsey',
+        "the Brigadier's Italian Uncle, Mario,"
         ];
 
     async function playSound() {
@@ -58,7 +59,7 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
     }
 
         return (
-            <View>
+            <View style={[styles.buttonContainer, { borderWidth: 2, borderColor: "#ffd33d", borderRadius: 5 }]}>
             <Pressable
             style={styles.button}
             onPress={handleButtonClick}
@@ -74,17 +75,24 @@ export default function SupportingCharacter({fadeOpacitySupporting, fadeInOutIn,
 }
 
 const styles = StyleSheet.create({
+    buttonContainer: {
+        width: 170,
+        height: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 5,
+      },
     button: {
-    margin: 5,
     padding: 10,
     backgroundColor: '#972C34',
-    width: 170,
-    height: 100,
+    width: '100%',
+    height: '100%',
     position: 'relative',
     top: 0,
     left: 0,
-    marginBottom: 5,
     borderRadius: 5,
+    borderWidth: 2,
+    borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1
@@ -92,7 +100,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'figtree',
-        fontSize: 20,
+        fontFamily: 'figtreeBold',
+        fontSize: 16,
     }
   });

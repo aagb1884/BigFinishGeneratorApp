@@ -1,7 +1,7 @@
 import React from 'react';
-import {Alert, Share, View, Button, StyleSheet} from 'react-native';
+import {Alert, Share, View, Pressable, StyleSheet, Text} from 'react-native';
 
-export default function ShareButton ({pitch}) {
+export default function ShareButton ({pitch, fontsLoaded}) {
    
   const onShare = async () => {
     try {
@@ -10,7 +10,8 @@ export default function ShareButton ({pitch}) {
         `Ever wondered what you'd say to Nick Briggs if you were trapped in a lift together?
         \nWell wonder no more! 
         \nWith the Big Finish Boxset Generator App you can come up with dozens of lukewarm pitches to while away the increasingly oxygen-starved hours.
-        \n${pitch}`,
+        \n${pitch}
+        \nhttps://andrewblair.co.uk/apps/big-finish-generator`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -26,17 +27,38 @@ export default function ShareButton ({pitch}) {
     }
   };
   return (
-    <View style={{marginTop: 20}}>
-      <Button style={styles.clearButton} onPress={onShare} title="Share" />
+    <View>
+      <Pressable style={styles.shareButton} onPress={onShare} title="Share">
+      {fontsLoaded && (
+              <>
+                <Text style={styles.buttonText}>Share</Text>
+                </>
+            )}
+            </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  clearButton: {
-    backgroundColor: 'blue',
-    borderRadius: 5,
+  shareButton: {
+    margin: 5,
     padding: 10,
-    width: 150,
-  }
+    backgroundColor: '#2C3396',
+    width: 170,
+    height: 50,
+    position: 'relative',
+    top: 0,
+    left: 0,
+    marginBottom: 5,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1     
+  },
+  buttonText: {
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: 'figtreeBold',
+    fontSize: 20
+}
 });
